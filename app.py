@@ -66,8 +66,10 @@ class ScreenshotApp:
         self.running = True
         self.visible = True  # Track visibility state
         
-        # Setup hotkey for toggling visibility (CTRL+ALT)
+        # Setup hotkeys
         keyboard.add_hotkey('ctrl+alt', self.toggle_visibility)
+        # New hotkey for immediate screenshot
+        keyboard.add_hotkey('ctrl+shift', self.take_immediate_screenshot)
         
         # Start the screenshot thread
         self.screenshot_thread = threading.Thread(target=self.screenshot_loop)
@@ -88,6 +90,11 @@ class ScreenshotApp:
             self.root.deiconify()  # Show the window
             self.root.attributes('-topmost', True)  # Make sure it's on top
             self.visible = True
+    
+    def take_immediate_screenshot(self):
+        """Take an immediate screenshot when CTRL+SHIFT is pressed and reset timer"""
+        # Reset the countdown to trigger a new screenshot
+        self.countdown = 0
                 
     def take_screenshot(self) -> Dict[str, Any]:
         """Send the screenshot to Gemini and return the structured response."""
@@ -198,6 +205,7 @@ if __name__ == "__main__":
         popup_menu = tk.Menu(root, tearoff=0)
         popup_menu.add_command(label="Close", command=app.on_closing)
         popup_menu.add_command(label="Toggle Visibility", command=app.toggle_visibility)
+        popup_menu.add_command(label="Take Screenshot Now", command=app.take_immediate_screenshot)
         popup_menu.tk_popup(event.x_root, event.y_root)
         
     root.mainloop()
