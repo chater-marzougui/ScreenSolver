@@ -47,8 +47,11 @@ JSON response format:
 
 # If you cannot determine the answer, return "X" as the final choice.
 
-These are some examples of questions you might encounter with answers:
+These are some examples of questions you might encounter with their answers (they may not be related to the image):
 {text_help}
+
+
+The image is provided below. Analyze it and provide your answer in the specified JSON format.
             """
 
 class ScreenshotApp:
@@ -67,14 +70,14 @@ class ScreenshotApp:
         screen_height = root.winfo_screenheight()
         x_position = 16  # 150px from right edge
         y_position = screen_height - 42  # Middle height
-        self.root.geometry(f"80x32+{x_position}+{y_position}")
+        self.root.geometry(f"108x32+{x_position}+{y_position}")
         
         # Two blocks
         self.frame1 = tk.Frame(root, width=32, height=32, bg=bg_color)
         self.frame1.grid(row=0, column=0)
         self.frame1.grid_propagate(False)
         # transparent background
-        self.frame2 = tk.Frame(root, width=48, height=32, bg=bg_color)
+        self.frame2 = tk.Frame(root, width=76, height=32, bg=bg_color)
         self.frame2.grid(row=0, column=1)
         self.frame2.grid_propagate(False)
         
@@ -110,10 +113,8 @@ class ScreenshotApp:
         self.screenshot_thread.daemon = True
         self.screenshot_thread.start()
         
-        # Start the UI update thread
-        self.ui_thread = threading.Thread(target=self.update_ui)
-        self.ui_thread.daemon = True
-        self.ui_thread.start()
+        # Use Tkinter's after method instead of a separate thread for UI updates
+        self.update_ui_periodic()
     
     def toggle_visibility(self):
         """Toggle the visibility of the app window"""
@@ -133,6 +134,7 @@ class ScreenshotApp:
     def take_screenshot(self) -> Dict[str, Any]:
         """Send the screenshot to Gemini and return the structured response."""
         delete_temp_files = True
+        self.update_result("WAIT...")
         try:
             screenshot = ImageGrab.grab()
             
@@ -149,8 +151,6 @@ class ScreenshotApp:
             
             # Extract the text response
             text_response = response.text
-            print(f"Response text: {response}")  # Debugging output
-            
             # Try to parse JSON from the response text
             try:
                 # Find JSON in the response (in case it's embedded in text)
@@ -186,20 +186,21 @@ class ScreenshotApp:
             # Take screenshot at the start of each cycle
             response = self.take_screenshot()
             if "final_choice" in response:
-                self.update_result(f"{response['final_choice'].upper().strip()}")
+                # Use thread-safe method to update GUI
+                self.root.after(0, self.update_result, f"{response['final_choice'].upper().strip()}")
             else:
-                self.update_result("X")
+                self.root.after(0, self.update_result, "X")
             
             # Count down
             while self.countdown > 0 and self.running:
                 time.sleep(1)
                 if self.visible:  # Only refresh topmost when visible
-                    self.root.attributes('-topmost', True)
+                    self.root.after(0, lambda: self.root.attributes('-topmost', True))
                 self.countdown -= 1
     
-    def update_ui(self):
-        """Update the UI elements"""
-        while self.running:
+    def update_ui_periodic(self):
+        """Update the UI elements using Tkinter's after method (thread-safe)"""
+        if self.running:
             # Update timer
             current_time = ""
             if self.countdown < 10:
@@ -207,7 +208,9 @@ class ScreenshotApp:
             else:
                 current_time = str(self.countdown)
             self.timer_text.set(current_time)
-            time.sleep(0.5)
+            
+            # Schedule the next update
+            self.root.after(500, self.update_ui_periodic)
 
     def update_result(self, result: str):
         """Update the result text"""
