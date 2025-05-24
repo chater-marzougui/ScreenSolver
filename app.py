@@ -11,14 +11,38 @@ import dotenv
 import os
 dotenv.load_dotenv()
 
-genai.configure(api_key=os.getenv("API_KEY"))            
+api_key = os.getenv("API_KEY")
+genai.configure(api_key=api_key)            
 model = genai.GenerativeModel('gemini-2.0-flash')
 countdown = 12
+bg_color = "#692782"  # Black background
+text_color = "#FFFFFF"  # White text
 
-prompt = """See the the image and respond to the QCM question in it, choose the best answer.
-            The answer should be a single word, and the response should be in a valid JSON structure
-            with keys 'response' and 'final_choice' which is a single letter (comma seperated if multi answer),
-            if there's no question return the letter X in both response and final_choice."""
+prompt = """
+Analyze the image and answer the multiple choice question (QCM/MCQ) shown.
+
+Instructions:
+1. Carefully read the question and all answer options
+2. Determine if this is a single-answer or multiple-answer question.
+3. Select the most appropriate answer(s)
+4. Provide your response in valid JSON format with these exact key:
+   - "final_choice": The letter(s) only (e.g., "A" for single answer, "A,C,E" for multiple answers)
+
+Format requirements:
+- For single answers: Use one letter (e.g., "A", "B", "C", etc.)
+- For multiple answers: Use comma-separated letters with no spaces (e.g., "A,C", "A,B", "B,C,D" etc.)
+- If no question is visible in the image, return "X"
+
+IMPORTANT:
+- Do not include any additional text or explanations in the response
+- Ensure the response is strictly in JSON format
+
+JSON response format:
+{
+    "final_choice": the_answer_here
+}
+
+            """
 
 class ScreenshotApp:
     def __init__(self, root):
@@ -36,14 +60,14 @@ class ScreenshotApp:
         screen_height = root.winfo_screenheight()
         x_position = 16  # 150px from right edge
         y_position = screen_height - 42  # Middle height
-        self.root.geometry(f"64x32+{x_position}+{y_position}")
+        self.root.geometry(f"80x32+{x_position}+{y_position}")
         
         # Two blocks
         self.frame1 = tk.Frame(root, width=32, height=32, bg="")
         self.frame1.grid(row=0, column=0)
         self.frame1.grid_propagate(False)
         # transparent background
-        self.frame2 = tk.Frame(root, width=32, height=32, bg="")
+        self.frame2 = tk.Frame(root, width=48, height=32, bg="")
         self.frame2.grid(row=0, column=1)
         self.frame2.grid_propagate(False)
         
@@ -51,15 +75,18 @@ class ScreenshotApp:
         self.timer_text = tk.StringVar()
         self.timer_text.set(str(countdown))
         self.timer_label = tk.Label(self.frame1, textvariable=self.timer_text,
-                            bg="#692782", fg="#FFFFFF", font=("Arial", 12, "bold"))
+                            bg=bg_color, fg=text_color, font=("Arial", 12, "bold"))
         self.timer_label.place(x=5, y=8)
         
         # Result in second block
         self.result_text = tk.StringVar()
-        self.result_text.set("X")
+        self.result_text.set("")
         self.result_label = tk.Label(self.frame2, textvariable=self.result_text,
-                            bg="#692782", fg="#FFFFFF", font=("Arial", 12, "bold"))
-        self.result_label.place(x=5, y=8)
+                    bg=bg_color, fg=text_color, font=("Arial", 12, "bold"))
+        self.result_label.place(x=8, y=8)
+        
+        # Set frame background to match
+        self.frame2.config(bg=bg_color)
         
         # Variables
         self.countdown = countdown
@@ -98,11 +125,12 @@ class ScreenshotApp:
                 
     def take_screenshot(self) -> Dict[str, Any]:
         """Send the screenshot to Gemini and return the structured response."""
+        delete_temp_files = True
         try:
             screenshot = ImageGrab.grab()
             
             # Save to temp file to get size
-            temp_filename = "temp_screenshot.png"
+            temp_filename = "screenshots/temp_screenshot" + str(int(time.time())) + ".png"
             screenshot.save(temp_filename)
             
             # Prepare the image for submission
@@ -124,19 +152,22 @@ class ScreenshotApp:
                 if json_start >= 0 and json_end > json_start:
                     json_str = text_response[json_start:json_end]
                     parsed_json = json.loads(json_str)
+                    if "final_choice" in parsed_json and parsed_json["final_choice"].strip().upper() != "X":
+                        delete_temp_files = False
+
                     return parsed_json
                 else:
                     # If no JSON found, return the raw text
-                    return {"raw_response": text_response, "final_choice": "X"}
+                    return {"final_choice": "X"}
             except json.JSONDecodeError:
                 # If JSON parsing fails, return the raw text
-                return {"raw_response": text_response, "final_choice": "X"}
+                return {"final_choice": "X"}
                 
         except Exception as e:
             return {"error": str(e), "final_choice": "X"}
         finally:
             # Clean up the temporary file
-            if os.path.exists(temp_filename):
+            if os.path.exists(temp_filename) and delete_temp_files:
                 os.remove(temp_filename)
 
     def screenshot_loop(self):
@@ -147,9 +178,9 @@ class ScreenshotApp:
             # Take screenshot at the start of each cycle
             response = self.take_screenshot()
             if "final_choice" in response:
-                self.result_text.set(f"{response['final_choice'].upper()}")
+                self.update_result(f"{response['final_choice'].upper().strip()}")
             else:
-                self.result_text.set("X")
+                self.update_result("X")
             
             # Count down
             while self.countdown > 0 and self.running:
@@ -169,6 +200,11 @@ class ScreenshotApp:
                 current_time = str(self.countdown)
             self.timer_text.set(current_time)
             time.sleep(0.5)
+
+    def update_result(self, result: str):
+        """Update the result text"""
+        self.result_text.set(result)
+        self.root.update_idletasks()
     
     def start_move(self, event):
         """Start window drag operation"""
@@ -193,10 +229,30 @@ class ScreenshotApp:
         self.running = False
         keyboard.unhook_all()  # Remove hotkey listeners
         self.root.destroy()
+        
+    def validate_gemini_api_key(self):
+        """Validate if the Gemini API key is set"""
+        if not api_key or api_key.strip() == "":
+            self.update_result("GK")
+            return
+        
+        try:
+            response = model.generate_content(["Hi"])
+            if not response.text:
+                self.update_result("GE")
+                return
+        except Exception:
+            self.update_result("GE")
+            return
+        
+        self.update_result("OK")
+            
+        
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = ScreenshotApp(root)
+    app.validate_gemini_api_key()  # Validate API key at startup
     # Add right-click menu to close the app
     root.bind("<Button-3>", lambda event: show_popup(event, app))
     
