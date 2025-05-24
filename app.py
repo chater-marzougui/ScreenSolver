@@ -15,10 +15,13 @@ api_key = os.getenv("API_KEY")
 genai.configure(api_key=api_key)            
 model = genai.GenerativeModel('gemini-2.0-flash')
 countdown = 12
-bg_color = "#692782"  # Dark gray background
-text_color = "#FFFFFF"  # White text
+bg_color = "#692782"
+text_color = "#FFFFFF"
+text_help = None
+with open("forwlan.txt", "r") as f:
+    text_help = f.read().strip()
 
-prompt = """
+prompt = f"""
 Analyze the image and answer the multiple choice question (QCM/MCQ) shown.
 
 Instructions:
@@ -38,10 +41,14 @@ IMPORTANT:
 - Ensure the response is strictly in JSON format
 
 JSON response format:
-{
+{{
     "final_choice": the_answer_here
-}
+}}
 
+# If you cannot determine the answer, return "X" as the final choice.
+
+These are some examples of questions you might encounter with answers:
+{text_help}
             """
 
 class ScreenshotApp:
@@ -142,6 +149,7 @@ class ScreenshotApp:
             
             # Extract the text response
             text_response = response.text
+            print(f"Response text: {response}")  # Debugging output
             
             # Try to parse JSON from the response text
             try:
