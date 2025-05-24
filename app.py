@@ -15,7 +15,7 @@ api_key = os.getenv("API_KEY")
 genai.configure(api_key=api_key)            
 model = genai.GenerativeModel('gemini-2.0-flash')
 countdown = 12
-bg_color = "#692782"  # Black background
+bg_color = "#692782"  # Dark gray background
 text_color = "#FFFFFF"  # White text
 
 prompt = """
@@ -51,9 +51,9 @@ class ScreenshotApp:
         self.root.geometry("64x64")
         self.root.resizable(False, False)
         self.root.attributes('-topmost', True)
-        self.root.wm_attributes('-transparentcolor', '')# Always on top
-        # self.root.attributes('-alpha', 0.6)     # Transparency (0.5/1.0)
-        self.root.overrideredirect(True)        # Remove title bar/window decorations
+        self.root.attributes('-alpha', 1)
+        self.root.overrideredirect(True)  
+        self.root.wm_attributes('-transparentcolor', bg_color)
         
         # Position in middle-right of screen
         # screen_width = root.winfo_screenwidth()
@@ -63,11 +63,11 @@ class ScreenshotApp:
         self.root.geometry(f"80x32+{x_position}+{y_position}")
         
         # Two blocks
-        self.frame1 = tk.Frame(root, width=32, height=32, bg="")
+        self.frame1 = tk.Frame(root, width=32, height=32, bg=bg_color)
         self.frame1.grid(row=0, column=0)
         self.frame1.grid_propagate(False)
         # transparent background
-        self.frame2 = tk.Frame(root, width=48, height=32, bg="")
+        self.frame2 = tk.Frame(root, width=48, height=32, bg=bg_color)
         self.frame2.grid(row=0, column=1)
         self.frame2.grid_propagate(False)
         
