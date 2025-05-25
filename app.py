@@ -16,7 +16,10 @@ genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-2.0-flash')
 countdown = 12
 bg_color = "#692782"
-text_color = "#FFFFFF"
+text_color = "#FFFFFF" # FFFFFF for white or #000000 for black
+if not api_key:
+    print("API key not found. Please set the API_KEY environment variable.")
+    exit(1) 
 text_help = None
 with open("forwlan.txt", "r") as f:
     text_help = f.read().strip()
