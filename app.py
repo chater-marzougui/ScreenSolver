@@ -119,13 +119,11 @@ class ScreenshotApp:
     
     def toggle_visibility(self):
         """Toggle the visibility of the app window"""
-        if self.visible:
-            self.root.withdraw()  # Hide the window
-            self.visible = False
+        self.visible = not self.visible
+        if not self.visible:
+            self.update_result("")
         else:
-            self.root.deiconify()  # Show the window
-            self.root.attributes('-topmost', True)  # Make sure it's on top
-            self.visible = True
+            self.update_result("X")
     
     def take_immediate_screenshot(self):
         """Take an immediate screenshot when CTRL+SHIFT is pressed and reset timer"""
@@ -185,7 +183,7 @@ class ScreenshotApp:
     def screenshot_loop(self):
         """Main loop for taking screenshots"""
         while self.running:
-            if self.paused:
+            if self.paused or not self.visible:
                 time.sleep(1)
                 continue
             self.countdown = countdown
@@ -203,7 +201,7 @@ class ScreenshotApp:
                 time.sleep(1)
                 if self.visible:  # Only refresh topmost when visible
                     self.root.after(0, lambda: self.root.attributes('-topmost', True))
-                if not self.paused:
+                if not self.paused and self.visible:
                     self.countdown -= 1
     
     def update_ui_periodic(self):
@@ -215,6 +213,9 @@ class ScreenshotApp:
                 current_time = "0" + str(self.countdown)
             else:
                 current_time = str(self.countdown)
+            if not self.visible:
+                current_time = ""
+            
             self.timer_text.set(current_time)
             
             # Schedule the next update
