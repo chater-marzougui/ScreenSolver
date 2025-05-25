@@ -65,8 +65,6 @@ class ScreenshotApp:
         self.root.overrideredirect(True)  
         self.root.wm_attributes('-transparentcolor', bg_color)
         
-        # Position in middle-right of screen
-        # screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
         x_position = 16  # 150px from right edge
         y_position = screen_height - 42  # Middle height
@@ -101,19 +99,22 @@ class ScreenshotApp:
         # Variables
         self.countdown = countdown
         self.running = True
-        self.visible = True  # Track visibility state
+        self.visible = True
+        self.paused = False
         
         # Setup hotkeys
         keyboard.add_hotkey('ctrl+alt', self.toggle_visibility)
         # New hotkey for immediate screenshot
         keyboard.add_hotkey('ctrl+shift', self.take_immediate_screenshot)
+        # Hotkey to toggle pause state
+        keyboard.add_hotkey('ctrl+space', self.toggle_pause)
         
         # Start the screenshot thread
         self.screenshot_thread = threading.Thread(target=self.screenshot_loop)
         self.screenshot_thread.daemon = True
         self.screenshot_thread.start()
         
-        # Use Tkinter's after method instead of a separate thread for UI updates
+        # Use Tkinter's after method for UI updates
         self.update_ui_periodic()
     
     def toggle_visibility(self):
@@ -147,6 +148,9 @@ class ScreenshotApp:
                 image_data = img_file.read()
             
             # Create a multipart message with text and image
+            if not image_data:
+                print("Screenshot is empty, returning error")
+                return {"error": "Screenshot is empty", "final_choice": "X"}
             response = model.generate_content([prompt, {"mime_type": "image/png", "data": image_data}])
             
             # Extract the text response
@@ -181,6 +185,9 @@ class ScreenshotApp:
     def screenshot_loop(self):
         """Main loop for taking screenshots"""
         while self.running:
+            if self.paused:
+                time.sleep(1)
+                continue
             self.countdown = countdown
             
             # Take screenshot at the start of each cycle
@@ -196,7 +203,8 @@ class ScreenshotApp:
                 time.sleep(1)
                 if self.visible:  # Only refresh topmost when visible
                     self.root.after(0, lambda: self.root.attributes('-topmost', True))
-                self.countdown -= 1
+                if not self.paused:
+                    self.countdown -= 1
     
     def update_ui_periodic(self):
         """Update the UI elements using Tkinter's after method (thread-safe)"""
@@ -216,7 +224,15 @@ class ScreenshotApp:
         """Update the result text"""
         self.result_text.set(result)
         self.root.update_idletasks()
-    
+        
+    def toggle_pause(self):
+        """Toggle the pause state of the screenshot loop"""
+        self.paused = not self.paused
+        if self.paused:
+            self.update_result("Paused")
+        else:
+            self.update_result("Running")
+        
     def start_move(self, event):
         """Start window drag operation"""
         self.x = event.x
@@ -244,16 +260,16 @@ class ScreenshotApp:
     def validate_gemini_api_key(self):
         """Validate if the Gemini API key is set"""
         if not api_key or api_key.strip() == "":
-            self.update_result("GK")
+            self.update_result("No Key")
             return
         
         try:
             response = model.generate_content(["Hi"])
             if not response.text:
-                self.update_result("GE")
+                self.update_result("GE Err")
                 return
         except Exception:
-            self.update_result("GE")
+            self.update_result("GE Err")
             return
         
         self.update_result("OK")
@@ -263,7 +279,7 @@ class ScreenshotApp:
 if __name__ == "__main__":
     root = tk.Tk()
     app = ScreenshotApp(root)
-    app.validate_gemini_api_key()  # Validate API key at startup
+    app.validate_gemini_api_key()
     # Add right-click menu to close the app
     root.bind("<Button-3>", lambda event: show_popup(event, app))
     
