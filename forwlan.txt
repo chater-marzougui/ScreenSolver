@@ -58,7 +58,7 @@ right answer: Generally, users are automatically redirected to a portal page whe
 
 authentication.
 16. Which of the following statements about 2.4 GHz channels is true?
-right answer:(D) Channels 1, 5, 9, and 13 do not overlap if the 802.11b standard is not considered.
+right answer: Channels 1, 5, 9, and 13 do not overlap if the 802.11b standard is not considered.
 
 17. What is the maximum length of power cables used when constructing WLANS?
 right answer: 70 m
@@ -102,7 +102,7 @@ right answer: Management frame
 27. There are 300 STAs with a concurrency of 70% on a small WLAN. These STAs support both the 2.4 GHz
 and 5 GHz frequency bands. Assuming that each AP connects to 40 STAs on dual radios, what is the
 minimum number of APs required?
-right answer: (B) 6
+right answer: 6
 
 28. What is the attenuation at the main lobe width of a directional antenna?
 right answer: 3 dB
@@ -117,9 +117,9 @@ right answer: 360
 
 31. VLAN pool technology is used on a large-scale WLAN to provide address services for a large number of
 STAs. If a STA roams to a new AP, which of the following statements about roaming is true?
-right answer: (A) This is Layer 2 roaming.
+right answer: This is Layer 2 roaming.
 
-32. Which of the following is not displayed after the display ap all command is executed on a Huawei AC?
+32. Which of the following is not displayed after the "display ap all" command is executed on a Huawei AC?
 right answer: Channels of APs
 
 33. Which of the following statements about passive neighbor probe is true?
@@ -145,7 +145,7 @@ security profile, an SSID profile, and a VAP profile. 3. Configure the source in
 5. Associate the STA with the AP to verify the configuration result. 6. Bind the security profile, SSID profile,
 and VAP profile to the AP group. 7. Configure the country code. Which of the following sequences is
 correct?
-right answer: 7 -> 4-3 -> 1 -> 2 -> 6 -> 5
+right answer: 7 -> 4 -> 3 -> 1 -> 2 -> 6 -> 5
 
 39. What is the maximum number of source IP addresses that can be specified for an AC to establish
 CAPWAP tunnels with APs?
@@ -199,8 +199,7 @@ Right answers:
 
 48. Which of the following statements about CSMA/CA are true?
 Right answers: 
-- When detecting that the channel is idle, the STA with the data transmission requirement needs to wait for a
-DIFS first. In addition, the STA needs to send the high-priority frame first, if it has one.
+- When detecting that the channel is idle, the STA with the data transmission requirement needs to wait for a DIFS first. In addition, the STA needs to send the high-priority frame first, if it has one.
 - Before sending data, the STA and AP exchange RTS and CTS frames to avoid transmission conflicts.
 
 49. A STA is connected to an AP but cannot obtain an IP address. Which of the following are possible
@@ -257,10 +256,44 @@ right answer : False
 coverage overlapping for STAs to roam seamlessly between them.
 right answer : False
 
-59. A WLAN built with 802.11ax APs allows access for only 802.11ax STAS.
+59. A WLAN built with 802.11ax APs allows access for only 802.11ax STAs.
 right answer : False
 
 60. OFDM can use overlapping channels by defining subcarriers. The wave peak of each subcarrier is used
 for data encoding. When a subcarrier reaches its wave peak, the amplitude of the other subcarrier is 0. That
 is, the two subcarriers are orthogonal and have no interference.
 right answer : True
+
+61. Which of the following is the standard for WLAN encryption?
+right answer: 802.11i
+
+62. Which of the following are not PoE power cables?
+right answer:
+- Feeder.
+- Optical Fiber.
+- Coaxial cable.
+
+63. Which of the following statements are correct about roaming?
+right answer:
+- Two APs cannot support roaming without overlapping coverage areas.
+- Two APs cannot support roaming with different SSID.
+
+64.Which of the following are advantages of 5 GHz over 2.4 GHz?
+right answer:
+- Abundant spectrum resources and low interference.
+- High energy and strong penetration power
+
+65.Which of the following statements about WLAN layer 2 and layer 3 networking modes
+are correct?
+right answer:
+- Layer 2 networking is easy to deploy.
+- Layer 3 networking is complex to deploy.
+
+66.Which of the following is true about the order of starting AP?
+right answer:
+- DHCP Adress -> CAPWAP discoveries AC -> Upgrade software -> Download config.
+
+67.Which of the following factors affect the coverage range of an AP?
+right answer:
+- AP size.
+
