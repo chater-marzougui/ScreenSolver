@@ -103,7 +103,7 @@ class ScreenshotApp:
         self.paused = False
         
         # Setup hotkeys
-        keyboard.add_hotkey('ctrl+alt', self.toggle_visibility)
+        keyboard.add_hotkey('shift+a', self.toggle_visibility)
         # New hotkey for immediate screenshot
         keyboard.add_hotkey('ctrl+shift', self.take_immediate_screenshot)
         # Hotkey to toggle pause state

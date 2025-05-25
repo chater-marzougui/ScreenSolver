@@ -107,7 +107,7 @@ This project demonstrates practical AI integration in a desktop application - co
 - 🤖 **AI-Powered Answer Detection** using Google's Gemini 2.0 Flash model
 - 💡 **Instant Answer Display** in a compact, floating interface
 - ⌨️ **Global Hotkey Support**:
-  - `Ctrl+Alt` - Toggle visibility
+  - `Shift+A` - Toggle visibility
   - `Ctrl+Shift` - Take immediate screenshot
   - `Ctrl+Space` - Toggle pause/resume
 - 🖱️ **Right-Click Menu** for quick access to controls
@@ -234,7 +234,7 @@ python app.py
    - Show a countdown timer in the left box
 
 3. **Controls**:
-   - **Ctrl+Alt** - Toggle visibility of the window
+   - **Shift+A** - Toggle visibility of the window
    - **Ctrl+Shift** - Take immediate screenshot and reset timer
    - **Ctrl+Space** - Pause/resume automatic screenshots
    - **Right-click** on the window for additional options:
@@ -303,7 +303,7 @@ Create a `forwlan.txt` file in the project root to provide custom question/answe
 - Check if you've exceeded API rate limits
 
 **Application Not Responding:**
-- Try the global hotkeys (`Ctrl+Alt`, `Ctrl+Shift`, `Ctrl+Space`)
+- Try the global hotkeys (`Shift+A`, `Ctrl+Shift`, `Ctrl+Space`)
 - Right-click on the window for the context menu
 - Force close and restart if necessary
 
