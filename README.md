@@ -36,6 +36,28 @@ By using ScreenSolver, you agree to use it responsibly and in accordance with al
 **Your automated assistant for timed multiple-choice questions.**  
 Built with ❤️ in Python and Gemini AI.
 
+
+<br />
+<div align="center">
+  <a href="https://github.com/chater-marzougui/ScreenSolver">
+     <img src="./images/screensolver_logo.svg" alt="ScreenSolver Logo" width="256" height="256">
+  </a>
+  <a href="https://chater-marzougui.github.io/ScreenSolver">
+    <h1 width="35px">ScreenSolver
+    </h1>
+  </a>
+  <p align="center">
+    <br />
+    <br />
+    <a href="https://github.com/chater-marzougui/ScreenSolver/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    ·
+    <a href="https://github.com/chater-marzougui/ScreenSolver/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+
+<br/>
+
+
 ---
 
 <details>
@@ -67,6 +89,13 @@ Built with ❤️ in Python and Gemini AI.
 **ScreenSolver** is a lightweight desktop utility designed to help users with timed multiple-choice questions. It automatically captures your screen, analyzes question content using Google's Gemini AI, and displays the most likely correct answer - all with a minimal, unobtrusive interface that stays out of your way.
 
 This project demonstrates practical AI integration in a desktop application - combining screen capture, OCR capabilities, AI reasoning, and a clean user interface to create a helpful study companion.
+
+### 📸 Screenshot
+
+<div align="center">
+   <img src="images/screenshot.png" alt="ScreenSolver Screenshot" width="100%">
+   <p><em>ScreenSolver in action - analyzing multiple-choice questions with AI-powered assistance</em></p>
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
