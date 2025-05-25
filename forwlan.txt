@@ -1,191 +1,266 @@
 1. Wi-Fi 6 is the latest generation of the 802.11 standard launched by the Wi-Fi Alliance. It has advantages
 such as high bandwidth and low latency. What is the maximum theoretical rate of a Wi-Fi 6 AP on the 2.4
 GHz frequency band?
-• 1.15 Gbps
+right answer: 1.15 Gbps
+
 2. Three APs deployed on the first floor of a building work on channels 1, 6, and 11. In the same direction,
 which of the following channel plans is recommended for three APs on the second floor?
-• Channels 6, 11, 1
+right answer: Channels 6, 11, 1
+
 3. Which of the following statements about splitters and couplers is true?
-• splitter splits power equally, whereas a coupler splits power unequally.
+right answer: splitter splits power equally, whereas a coupler splits power unequally.
+
 4. Which of the following statements about the antenna azimuth and downtilt is false?
-• The downtilt refers to the angle between an antenna and the vertical plane.
+right answer: The downtilt refers to the angle between an antenna and the vertical plane.
+
 5. Which of the following is the basic network architecture consisting of multiple APs and distribution
 systems connecting the APs?
-• ESS
+right answer: ESS
+
 6. On a small WLAN, two Fit APs (AP1 and AP2) are deployed. AP1 has two SSIDs (huawei and HUAWEI)
 and AP2 also has two SSIDs (huawei and admin). How many different SSIDs and BSSIDs are available on
 the WLAN?
-• 3 SSIDs and 4 BSSIDs
+right answer: 3 SSIDs and 4 BSSIDs
+
 7. Which of the following channels overlap on the 2.4 GHz frequency band?
-• Channels 4 and 8
+right answer: Channels 4 and 8
+
 8. How many APs can be connected to a Huawei AC with no licenses?
-• 0
+right answer: 0
+
 9. Which of the following statements about wireless communications systems is false?
-• Source coding is a process of converting raw information into digital signals by using a coding scheme.
+right answer: Source coding is a process of converting raw information into digital signals by using a coding scheme.
+
 10. A large-scale WLAN project plans to deploy 1 AirEngine 9700-M AC, 100 AirEngine 8760-X1-PRO APs,
 200 AirEngine 5760-51 APs, and 20 AD9430DN-24 APs (each AD9430DN-24 has 20 R250D RUs connected).
 In this case, how many AP licenses must you apply for so that all APs can work properly?
-• 320
+right answer: 320
+
 11. Which of the following statements about CAPWAP tunnel establishment is true when Option 43 is
 correctly configured in a WLAN Layer 2 networking scenario?
-• During CAPWAP tunnel establishment, an AP directly sends a unicast message to the AC specified in
+right answer: During CAPWAP tunnel establishment, an AP directly sends a unicast message to the AC specified in
+
 Option 43. It does not broadcast the Discovery Request.
 12. If a STA is associated with an SSID that is the same on two APs, which of the following is used to
 identify the AP to which a STA is connected?
-• BSSID
+right answer: BSSID
+
 13. Given that the gain of antenna A is 11 dBi and that of antenna B is 8 dBi, what is the difference between
 the gains of the two antennas?
-• 3 dB
+right answer: 3 dB
+
 14. Which of the following makes CCMP encryption more secure than TKIP encryption?
-• More complex encryption algorithm
+right answer: More complex encryption algorithm
+
 15. Portal authentication is a commonly used authentication mode. Which of the following statements
 about Portal authentication is true?
-• Generally, users are automatically redirected to a portal page when they access a network requiring Portal
+right answer: Generally, users are automatically redirected to a portal page when they access a network requiring Portal
+
 authentication.
 16. Which of the following statements about 2.4 GHz channels is true?
-• Channels 1, 5, 9, and 13 do not overlap if the 802.11b standard is not considered.
+right answer: Channels 1, 5, 9, and 13 do not overlap if the 802.11b standard is not considered.
+
 17. What is the maximum length of power cables used when constructing WLANS?
-• 70 m
+right answer: 70 m
+
 18. Which of the following commands is used to display information about online users on a Huawei AC?
-• display access-user
+right answer: display access-user
+
 19. The AP goes online through the following phases. 1. The AP determines whether an upgrade is needed.
 2. The AP and AC establish a CAPWAP tunnel. 3. The AP goes online, and the AC delivers services to the
 AP. 4. The AP obtains an IP address. Which of the following sequences is correct?
-• 4 -> 2 -> 1 -> 3
+right answer: 4 -> 2 -> 1 -> 3
+
 20. In dual-AC cold backup networking, which of the following items does an AP compare first to determine
 the active AC if the two ACs have the same priority?
-• Number of APs associated with the two ACs (The AC with fewer associated APs is selected as the active
+right answer: Number of APs associated with the two ACs (The AC with fewer associated APs is selected as the active
+
 AC.)
 21. Beamwidth is an important parameter for directional antennas. It refers to the angular width of the
 radiation pattern between the beam peak and the half-power points. How much lower are half-power points
 from the beam peak?
-• 3 dB
+right answer: 3 dB
+
 22. Which type of frames does a STA send to obtain surrounding wireless network information during
 active scanning?
-• Probe Request frame
+right answer: Probe Request frame
+
 23. Which of the following statements about 802.1X and RADIUS is true?
-• 802.1X and RADIUS are different technologies, but they are often used together for user access control.
+right answer: 802.1X and RADIUS are different technologies, but they are often used together for user access control.
+
 24. Assuming that there are four STAs that want to use a channel, which of the following backoff time
 settings enables a STA to preferentially occupy the channel?
-• 4
+right answer: 4
+
 25. If an AP cannot go online due to version mismatch, which of the following commands can be used to
 locate this fault?
-• display ap all
+right answer: display ap all
+
 26. Which of the following 802.11 frames is used when STAs join or leave a WLAN and roam between APs?
-• Management frame
+right answer: Management frame
+
 27. There are 300 STAs with a concurrency of 70% on a small WLAN. These STAs support both the 2.4 GHz
 and 5 GHz frequency bands. Assuming that each AP connects to 40 STAs on dual radios, what is the
 minimum number of APs required?
-• 6
+right answer: 6
+
 28. What is the attenuation at the main lobe width of a directional antenna?
-• 3 dB
+right answer: 3 dB
+
 29. An AC has only one interface connected to an aggregation switch through which user traffic reaches
 the Internet without passing through the AC. Which of the following networking + data forwarding modes
 can meet this requirement?
-• Off-path networking + direct forwarding
+right answer: Off-path networking + direct forwarding
+
 30. What is the angle (degrees) between an omnidirectional antenna and the horizontal radiation pattern?
-• 360
+right answer: 360
+
 31. VLAN pool technology is used on a large-scale WLAN to provide address services for a large number of
 STAs. If a STA roams to a new AP, which of the following statements about roaming is true?
-• This is Layer 2 roaming.
+right answer: This is Layer 2 roaming.
+
 32. Which of the following is not displayed after the display ap all command is executed on a Huawei AC?
-• Channels of APs
+right answer: Channels of APs
+
 33. Which of the following statements about passive neighbor probe is true?
-• An AP passively receives neighbor information to detect neighboring APs.
+right answer: An AP passively receives neighbor information to detect neighboring APs.
+
 34. Which of the following statements about directional antennas is false?
-• Only the main lobe of a directional antenna is useful, and side lobes can be ignored.
+right answer: Only the main lobe of a directional antenna is useful, and side lobes can be ignored.
+
 35. Which of the following is reflected by the antenna gain?
-• Antenna's capability to collect or transmit electromagnetic waves in a certain direction
+right answer: Antenna's capability to collect or transmit electromagnetic waves in a certain direction
+
 36. In a WLAN HSB scenario, which of the following data synchronization mode is not supported between
 the active and standby ACS?
-• Real-time backup
+right answer: Real-time backup
+
 37. The 5 GHz frequency band has abundant spectrum resources and a large number of non-overlapping
 channels. When planning an outdoor WLAN that requires neighboring APs to operate on non-overlapping
 channels, which of the following channels are applicable?
-• Channels 149, 153, 157, 161, and 165
+right answer: Channels 149, 153, 157, 161, and 165
+
 38. The following configurations are required to deploy a WLAN. 1. Bring an AP online. 2. Configure a
 security profile, an SSID profile, and a VAP profile. 3. Configure the source interface. 4. Create an AP group.
 5. Associate the STA with the AP to verify the configuration result. 6. Bind the security profile, SSID profile,
 and VAP profile to the AP group. 7. Configure the country code. Which of the following sequences is
 correct?
-• 7 -> 4-3 -> 1 -> 2 -> 6 -> 5
+right answer: 7 -> 4-3 -> 1 -> 2 -> 6 -> 5
+
 39. What is the maximum number of source IP addresses that can be specified for an AC to establish
 CAPWAP tunnels with APs?
-• 1
+right answer: 1
+
 40. In most cases, which of the following cannot be detected by a signal scanning tool?
-• Encryption mode
+right answer: Encryption mode
+
 41. A STA is 20 meters away from a dual-radio AP, and there are no obstacles between them. If the AP uses
 the default radio configuration, which of the following statements about the RSSI of the STA are true?
-• The RSSI on the 2.4 GHz frequency band is higher than that on the 5 GHz frequency band.
-• The STA preferentially accesses the 5 GHz frequency band.
+Right answers:
+- The RSSI on the 2.4 GHz frequency band is higher than that on the 5 GHz frequency band.
+- The STA preferentially accesses the 5 GHz frequency band.
+
 42. Which of the following methods can be used to avoid co-channel interference?
-• Increasing the AP transmit power and adjusting the antenna system
-• Multiplexing frequencies to prevent channel overlapping in the same or neighboring coverage areas
-• Separating coverage areas using obstacles
+Right answers:
+- Increasing the AP transmit power and adjusting the antenna system
+- Multiplexing frequencies to prevent channel overlapping in the same or neighboring coverage areas
+- Separating coverage areas using obstacles
+
 43. The home agent role is involved in Layer 3 networking between ACs. Which of the following statements
 about the home agent are true?
-• The home agent is a device that can communicate with the gateway on a STAs' home network at Layer 2.
-• The HAC or HAP serves as the home agent.
+Right answers: 
+- The home agent is a device that can communicate with the gateway on a STAs' home network at Layer 2.
+- The HAC or HAP serves as the home agent.
+
 44. An AP fails to go online after WLAN Layer 3 networking is configured. Which of the following are
 possible causes?
-• The source interface is not configured.
-• The network route is unreachable.
-• Option 43 is not configured.
+Right answers: 
+- The source interface is not configured.
+- The network route is unreachable.
+- Option 43 is not configured.
+
 45. Which of the following phases are involved when a STA accesses a WLAN?
-• Wi-Fi network scanning
-• Authentication
-• Association
+Right answers: 
+- Wi-Fi network scanning
+- Authentication
+- Association
+
 46. Which of the following statements about service holding upon CAPWAP link disconnection are true?
-• This function takes effect only in the AC off-path deployment.
-• This function takes effect only when the direct forwarding mode is used.
+Right answers: 
+- This function takes effect only in the AC off-path deployment.
+- This function takes effect only when the direct forwarding mode is used.
+
 47. Which of the following factors need to be considered during WLAN planning to determine the number
 of APs to be deployed in a single area?
-• Number of access users in the area
-• Area size
-• Field strength and bandwidth requirements
+Right answers: 
+- Number of access users in the area
+- Area size
+- Field strength and bandwidth requirements
+
 48. Which of the following statements about CSMA/CA are true?
-• When detecting that the channel is idle, the STA with the data transmission requirement needs to wait for a
+Right answers: 
+- When detecting that the channel is idle, the STA with the data transmission requirement needs to wait for a
 DIFS first. In addition, the STA needs to send the high-priority frame first, if it has one.
-• Before sending data, the STA and AP exchange RTS and CTS frames to avoid transmission conflicts.
+- Before sending data, the STA and AP exchange RTS and CTS frames to avoid transmission conflicts.
+
 49. A STA is connected to an AP but cannot obtain an IP address. Which of the following are possible
 causes?
-• No DHCP server is configured in the VLAN to which the STA belongs.
-• The forwarding mode or service VLAN is incorrectly configured.
+Right answers: 
+- No DHCP server is configured in the VLAN to which the STA belongs.
+- The forwarding mode or service VLAN is incorrectly configured.
+
 50. Which of the following modulation modes are supported based on signal parameters?
-• Amplitude modulation
-• Frequency modulation
-• Phase modulation
+Right answers: 
+- Amplitude modulation
+- Frequency modulation
+- Phase modulation
+
 51. Which of the following parameters directly impact the theoretical rate calculation in 802.11?
-• Maximum number of valid subcarriers
-• Coding rate
-• Maximum number of spatial streams
+Right answers: 
+- Maximum number of valid subcarriers
+- Coding rate
+- Maximum number of spatial streams
+
 52. Which of the following statements about OFDM and OFDMA are true?
-• With OFDMA, a channel with 80 MHz frequency bandwidth can be divided into a maximum of 37 RUs to
+Right answers: 
+- With OFDMA, a channel with 80 MHz frequency bandwidth can be divided into a maximum of 37 RUs to
 support 37 concurrent users.
-• OFDMA technology enables multiple users to simultaneously transmit data without queuing or contending
+- OFDMA technology enables multiple users to simultaneously transmit data without queuing or contending
 for resources, improving efficiency and reducing queuing latency.
+
 53. Which of the following modes can be used to upgrade Huawei APs?
-• Single AP upgrade
-• AP type-based upgrade
-• AP group-based upgrade
+Right answers: 
+- Single AP upgrade
+- AP type-based upgrade
+- AP group-based upgrade
+
 54. Which of the following statements about the default WLAN HSB configurations are true?
-• By default, the number of times HSB detection packets are retransmitted is 5.
-• By default, HSB is disabled.
+Right answers: 
+- By default, the number of times HSB detection packets are retransmitted is 5.
+- By default, HSB is disabled.
+
 55. Which of the following methods can be used to control the coverage area of an AP?
-• Adjusting the antenna angle of the AP
-• Adjusting the transmit power of the AP
+Right answers: 
+- Adjusting the antenna angle of the AP
+- Adjusting the transmit power of the AP
+
 56. Which of the following factors affect the coverage range of an AP?
-• AP transmit power
-• Antenna gain
-• Transmission Loss
+Right answers: 
+- AP transmit power
+- Antenna gain
+- Transmission Loss
+
 57. If a WLAN is deployed in AC + Fit AP networking, the APs work in full-duplex mode.
-• False
+right answer : False
+
 58. In an area with roaming requirements, two neighboring APs need to have more than 50% signal
 coverage overlapping for STAs to roam seamlessly between them.
-• False
+right answer : False
+
 59. A WLAN built with 802.11ax APs allows access for only 802.11ax STAS.
-• False
+right answer : False
+
 60. OFDM can use overlapping channels by defining subcarriers. The wave peak of each subcarrier is used
 for data encoding. When a subcarrier reaches its wave peak, the amplitude of the other subcarrier is 0. That
 is, the two subcarriers are orthogonal and have no interference.
-• True
+right answer : True

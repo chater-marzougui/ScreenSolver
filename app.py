@@ -47,7 +47,7 @@ JSON response format:
 
 # If you cannot determine the answer, return "X" as the final choice.
 
-These are some examples of questions you might encounter with their answers (they may not be related to the image):
+These are some examples of questions you might encounter with their answers they are absolutely right:
 {text_help}
 
 
