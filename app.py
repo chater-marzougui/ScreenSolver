@@ -278,6 +278,9 @@ class ScreenshotApp:
         
 
 if __name__ == "__main__":
+    # Create screenshots folder if it doesn't exist
+    if not os.path.exists("screenshots"):
+        os.makedirs("screenshots")
     root = tk.Tk()
     app = ScreenshotApp(root)
     app.validate_gemini_api_key()
