@@ -58,7 +58,7 @@ right answer: Generally, users are automatically redirected to a portal page whe
 
 authentication.
 16. Which of the following statements about 2.4 GHz channels is true?
-right answer: Channels 1, 5, 9, and 13 do not overlap if the 802.11b standard is not considered.
+right answer:(D) Channels 1, 5, 9, and 13 do not overlap if the 802.11b standard is not considered.
 
 17. What is the maximum length of power cables used when constructing WLANS?
 right answer: 70 m
@@ -102,7 +102,7 @@ right answer: Management frame
 27. There are 300 STAs with a concurrency of 70% on a small WLAN. These STAs support both the 2.4 GHz
 and 5 GHz frequency bands. Assuming that each AP connects to 40 STAs on dual radios, what is the
 minimum number of APs required?
-right answer: 6
+right answer: (B) 6
 
 28. What is the attenuation at the main lobe width of a directional antenna?
 right answer: 3 dB
@@ -117,13 +117,13 @@ right answer: 360
 
 31. VLAN pool technology is used on a large-scale WLAN to provide address services for a large number of
 STAs. If a STA roams to a new AP, which of the following statements about roaming is true?
-right answer: This is Layer 2 roaming.
+right answer: (A) This is Layer 2 roaming.
 
 32. Which of the following is not displayed after the display ap all command is executed on a Huawei AC?
 right answer: Channels of APs
 
 33. Which of the following statements about passive neighbor probe is true?
-right answer: An AP passively receives neighbor information to detect neighboring APs.
+right answer: Passive probe is used to establish neighbor relationships between authorized APs.
 
 34. Which of the following statements about directional antennas is false?
 right answer: Only the main lobe of a directional antenna is useful, and side lobes can be ignored.
@@ -133,7 +133,7 @@ right answer: Antenna's capability to collect or transmit electromagnetic waves 
 
 36. In a WLAN HSB scenario, which of the following data synchronization mode is not supported between
 the active and standby ACS?
-right answer: Real-time backup
+right answer: Incremental backup
 
 37. The 5 GHz frequency band has abundant spectrum resources and a large number of non-overlapping
 channels. When planning an outdoor WLAN that requires neighboring APs to operate on non-overlapping
@@ -152,7 +152,7 @@ CAPWAP tunnels with APs?
 right answer: 1
 
 40. In most cases, which of the following cannot be detected by a signal scanning tool?
-right answer: Encryption mode
+right answer: Power
 
 41. A STA is 20 meters away from a dual-radio AP, and there are no obstacles between them. If the AP uses
 the default radio configuration, which of the following statements about the RSSI of the STA are true?
