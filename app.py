@@ -418,6 +418,8 @@ def create_popup_menu(root, app):
     def show_popup(event):
         popup_menu = tk.Menu(root, tearoff=0)
         popup_menu.add_command(label="Close", command=app.on_closing)
+        popup_menu.add_command(label="Reload", command=app.reload_app)
+        popup_menu.add_command(label="Pause/Resume", command=app.toggle_pause)
         popup_menu.add_command(label="Toggle Visibility", command=app.toggle_visibility)
         popup_menu.add_command(label="Take Screenshot Now", command=app.take_immediate_screenshot)
         popup_menu.tk_popup(event.x_root, event.y_root)
