@@ -63,21 +63,21 @@ Built with ❤️ in Python and Gemini AI.
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#📱-about-screensolver">About ScreenSolver</a></li>
-    <li><a href="#✨-features">Features</a></li>
-    <li><a href="#🧠-tech-stack">Tech Stack</a></li>
-    <li><a href="#📁-project-structure">Project Structure</a></li>
-    <li><a href="#🛠️-installation">Installation</a></li>
-    <li><a href="#🔑-getting-a-gemini-api-key">Getting a Gemini API Key</a></li>
-    <li><a href="#🧑‍💻-how-to-use">How to Use</a></li>
-    <li><a href="#⚙️-configuration">Configuration</a></li>
-    <li><a href="#📚-adding-custom-context">Adding Custom Context</a></li>
-    <li><a href="#📋-requirements">Requirements</a></li>
-    <li><a href="#🔧-troubleshooting">Troubleshooting</a></li>
-    <li><a href="#📃-license">License</a></li>
-    <li><a href="#🤝-contributing">Contributing</a></li>
-    <li><a href="#📧-contact">Contact</a></li>
-    <li><a href="#⚠️-disclaimer">Disclaimer</a></li>
+    <li><a href="#-about-screensolver">About ScreenSolver</a></li>
+    <li><a href="#-features">Features</a></li>
+    <li><a href="#-tech-stack">Tech Stack</a></li>
+    <li><a href="#-project-structure">Project Structure</a></li>
+    <li><a href="#-installation">Installation</a></li>
+    <li><a href="#-getting-a-gemini-api-key">Getting a Gemini API Key</a></li>
+    <li><a href="#-how-to-use">How to Use</a></li>
+    <li><a href="#-configuration">Configuration</a></li>
+    <li><a href="#-adding-custom-context">Adding Custom Context</a></li>
+    <li><a href="#-requirements">Requirements</a></li>
+    <li><a href="#-troubleshooting">Troubleshooting</a></li>
+    <li><a href="#-license">License</a></li>
+    <li><a href="#-contributing">Contributing</a></li>
+    <li><a href="#-contact">Contact</a></li>
+    <li><a href="#-disclaimer">Disclaimer</a></li>
   </ol>
 </details>
 
@@ -177,7 +177,7 @@ screensolver/
 
 ---
 
-## 🛠️ Installation
+## 👷🏼 Installation
 
 ### Step 1: Clone the Repository
 ```bash
@@ -286,7 +286,7 @@ python app.py
 
 ---
 
-## ⚙️ Configuration
+## 🪛 Configuration
 
 ### Environment Variables
 Create a `.env` file with:
@@ -466,7 +466,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ---
 
-## ⚠️ Disclaimer
+## ⚠️Disclaimer
 
 This tool is provided for educational purposes only. Users are responsible for ensuring their use complies with all applicable laws, regulations, and institutional policies. The developers assume no responsibility for any misuse of this software.
 
